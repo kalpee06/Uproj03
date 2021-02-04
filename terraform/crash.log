@@ -1,0 +1,51 @@
+2021/02/04 01:16:38 [INFO] Terraform version: 0.14.5  
+2021/02/04 01:16:38 [INFO] Go runtime version: go1.15.6
+2021/02/04 01:16:38 [INFO] CLI args: []string{"C:\\Program Files\\terraform_0.14.5_windows_amd64\\terraform.exe", "init"}
+2021/02/04 01:16:38 [DEBUG] Attempting to open CLI config file: C:\Users\kpatel\AppData\Roaming\terraform.rc
+2021/02/04 01:16:38 [DEBUG] File doesn't exist, but doesn't need to. Ignoring.
+2021/02/04 01:16:38 [DEBUG] ignoring non-existing provider search directory terraform.d/plugins
+2021/02/04 01:16:38 [DEBUG] ignoring non-existing provider search directory C:\Users\kpatel\AppData\Roaming\terraform.d\plugins
+2021/02/04 01:16:38 [DEBUG] ignoring non-existing provider search directory C:\Users\kpatel\AppData\Roaming\HashiCorp\Terraform\plugins
+2021/02/04 01:16:38 [INFO] CLI command args: []string{"init"}
+2021/02/04 01:16:38 [TRACE] ModuleInstaller: installing child modules for . into .terraform\modules
+2021/02/04 01:16:38 [DEBUG] Module installer: begin appservice
+2021/02/04 01:16:38 [TRACE] ModuleInstaller: Module installer: appservice <nil> already installed in .terraform\modules\appservice\terraform\modules\appservice
+2021/02/04 01:16:38 [DEBUG] Module installer: begin network
+2021/02/04 01:16:38 [TRACE] ModuleInstaller: Module installer: network <nil> already installed in .terraform\modules\network\terraform\modules\network
+2021/02/04 01:16:38 [DEBUG] Module installer: begin nsg-test
+2021/02/04 01:16:38 [TRACE] ModuleInstaller: Module installer: nsg-test <nil> already installed in .terraform\modules\nsg-test\terraform\modules\networksecuritygroup
+2021/02/04 01:16:38 [DEBUG] Module installer: begin publicip
+2021/02/04 01:16:38 [TRACE] ModuleInstaller: Module installer: publicip <nil> already installed in .terraform\modules\publicip\terraform\modules\publicip
+2021/02/04 01:16:38 [DEBUG] Module installer: begin resource_group
+2021/02/04 01:16:38 [TRACE] ModuleInstaller: Module installer: resource_group <nil> already installed in .terraform\modules\resource_group\terraform\modules\resource_group
+2021/02/04 01:16:38 [TRACE] modsdir: writing modules manifest to .terraform\modules\modules.json
+2021/02/04 01:16:38 [TRACE] Meta.Backend: built configuration for "azurerm" backend with hash value 876268141
+2021/02/04 01:16:38 [TRACE] Preserving existing state lineage "d67f97b5-d02f-6cb9-d9f9-69837465fe2d"
+2021/02/04 01:16:38 [TRACE] Preserving existing state lineage "d67f97b5-d02f-6cb9-d9f9-69837465fe2d"
+2021/02/04 01:16:38 [TRACE] Meta.Backend: working directory was previously initialized for "azurerm" backend
+2021/02/04 01:16:38 [TRACE] Meta.Backend: using already-initialized, unchanged "azurerm" backend configuration
+2021/02/04 01:16:39 [TRACE] Meta.Backend: instantiated backend of type *azure.Backend
+2021/02/04 01:16:39 [DEBUG] checking for provisioner in "."
+2021/02/04 01:16:39 [DEBUG] checking for provisioner in "C:\\Program Files\\terraform_0.14.5_windows_amd64"
+2021/02/04 01:16:39 [INFO] Failed to read plugin lock file .terraform\plugins\windows_amd64\lock.json: open .terraform\plugins\windows_amd64\lock.json: The system cannot find the path specified.
+2021/02/04 01:16:39 [TRACE] Meta.Backend: backend *azure.Backend does not support operations, so wrapping it in a local backend
+panic: runtime error: invalid memory address or nil pointer dereference
+[signal 0xc0000005 code=0x0 addr=0x10 pc=0x12efada]
+
+goroutine 1 [running]:
+github.com/hashicorp/terraform/backend/remote-state/azure.(*RemoteClient).Get(0xc0000f61e0, 0x3d22d60, 0xc000800100, 0x27f8721)
+	/home/circleci/project/project/backend/remote-state/azure/client.go:42 +0x17a
+github.com/hashicorp/terraform/states/remote.(*State).refreshState(0xc0008a8a20, 0x7, 0x0)
+	/home/circleci/project/project/states/remote/state.go:111 +0x3f
+github.com/hashicorp/terraform/states/remote.(*State).RefreshState(0xc0008a8a20, 0x0, 0x0)
+	/home/circleci/project/project/states/remote/state.go:104 +0x73
+github.com/hashicorp/terraform/command.(*InitCommand).Run(0xc0007441c0, 0xc0000044b0, 0x0, 0x0, 0xc0005d2ba0)
+	/home/circleci/project/project/command/init.go:285 +0x12af
+github.com/mitchellh/cli.(*CLI).Run(0xc0005ed7c0, 0xc0005ed7c0, 0xc00069fd48, 0x1)
+	/go/pkg/mod/github.com/mitchellh/cli@v1.1.0/cli.go:260 +0x1cf
+main.wrappedMain(0x0)
+	/home/circleci/project/project/main.go:304 +0xe85
+main.realMain(0x0)
+	/home/circleci/project/project/main.go:106 +0xf1
+main.main()
+	/home/circleci/project/project/main.go:42 +0x45
